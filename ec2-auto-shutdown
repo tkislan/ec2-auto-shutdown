@@ -13,7 +13,8 @@ region=`ec2metadata --availability-zone | sed 's/placement: \(.*\).$/\1/'`
 last_activity=`date +%s`
 while true
 do
-  users_connected=`who -s | wc -l`
+  # users_connected=`who -s | wc -l`
+  users_connected=$(netstat -tnpa | grep 'ESTABLISHED.*sshd' | wc -l)
   average_load=`uptime | sed 's/.*load average: //' | awk -F\, '{print $1 }'`
   idle=`echo $average_load'<'$avg_load_threshold | bc -l`
 
