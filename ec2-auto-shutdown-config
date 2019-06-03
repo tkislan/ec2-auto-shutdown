@@ -1,3 +1,1 @@
 shutdown_idle_minutes=90
-avg_load_threshold=0.25
-
