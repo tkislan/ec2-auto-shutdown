@@ -10,7 +10,7 @@ shutdown_after=`expr $shutdown_idle_minutes \* 60`
 last_activity=`date +%s`
 while true
 do
-  users_connected=$(netstat -tnpa | grep 'ESTABLISHED.*sshd' | wc -l)
+  users_connected=$(netstat -tnpa | grep 'ESTABLISHED' | wc -l)
 
   if [ "$users_connected" -gt "0" ]; then
     last_activity=`date +%s`
